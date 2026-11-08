@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rowland Rose · VP of Technology</title>
+  <meta name="description" content="Developer turned VP of Technology, with 13+ years at RealClearPolitics. Sets technology strategy and oversees delivery for 17+ websites. Leads a team of five full-time in-house developers. Stays close enough to the code to make sound technical calls. Manages AI developer tool adoption.">
+  <link rel="canonical" href="https://www.rowlandrose.com/">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Rowland Rose · VP of Technology">
+  <meta property="og:description" content="Developer turned VP of Technology, with 13+ years at RealClearPolitics. Sets technology strategy and oversees delivery for 17+ websites. Leads a team of five full-time in-house developers. Stays close enough to the code to make sound technical calls. Manages AI developer tool adoption.">
+  <meta property="og:url" content="https://www.rowlandrose.com/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B6E6D'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3ERR%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #eaf5f4;
+      --card: #ffffff;
+      --ink: #1f2328;
+      --heading: #263238;
+      --muted: #4b5563;
+      --accent: #0b6e6d;
+      --rule: #c9d3d6;
+      --shadow: 0 1px 2px rgba(15, 40, 45, .06), 0 4px 16px rgba(15, 40, 45, .06);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #11181b;
+        --surface: #17262a;
+        --card: #182226;
+        --ink: #e3e8ea;
+        --heading: #f1f4f5;
+        --muted: #a7b3b8;
+        --accent: #5cc5c0;
+        --rule: #2c3b40;
+        --shadow: none;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #11181b; --surface: #17262a; --card: #182226; --ink: #e3e8ea; --heading: #f1f4f5;
+      --muted: #a7b3b8; --accent: #5cc5c0; --rule: #2c3b40; --shadow: none;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+    header { padding: 64px 0 28px; border-bottom: 4px solid var(--accent); }
+    h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 3.4rem); line-height: 1.1; color: var(--heading); letter-spacing: -.01em; }
+    .tagline { margin: 10px 0 18px; font-weight: 700; font-size: 1.15rem; color: var(--accent); }
+    .tagline span + span::before { content: '·'; margin: 0 .5em; }
+    .contact { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; font-size: .95rem; color: var(--muted); }
+    .contact a { color: inherit; }
+    .contact a:hover { color: var(--accent); }
+
+    section { padding: 40px 0 8px; }
+    h2 {
+      margin: 0 0 18px; padding-left: 12px; border-left: 6px solid var(--accent);
+      font-size: 1.45rem; line-height: 1.2; color: var(--heading);
+    }
+    .profile { margin: 0; padding: 20px 22px; background: var(--surface); border-radius: 8px; font-size: 1.1rem; }
+    .profile strong { color: var(--heading); }
+
+    .callout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; padding: 20px 22px; border: 2px solid var(--accent); border-radius: 8px; }
+    .callout p { margin: 0; font-size: 1.1rem; }
+    .button { display: inline-block; padding: 10px 18px; border-radius: 6px; background: var(--accent); color: var(--bg); font-weight: 700; text-decoration: none; }
+    .button:hover { filter: brightness(1.1); }
+    .company { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin: 26px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+    .company:first-of-type { margin-top: 4px; }
+    .company h3 { margin: 0; font-size: 1.3rem; color: var(--heading); }
+    .company .aside { color: var(--muted); font-size: .95rem; }
+    .roles { list-style: none; margin: 0 0 14px; padding: 0 0 0 12px; }
+    .roles li { display: grid; grid-template-columns: minmax(0, 15rem) auto; gap: 0 16px; }
+    .role { font-weight: 700; }
+    .dates { color: var(--accent); font-weight: 700; font-size: .92rem; font-variant-numeric: tabular-nums; align-self: center; }
+    ul.points { margin: 0; padding-left: 22px; }
+    ul.points li { margin: 0 0 8px; padding-left: 4px; }
+    ul.points li::marker { color: var(--accent); content: '■  '; font-size: .7em; }
+
+    .skills { display: grid; grid-template-columns: 16.5rem 1fr; gap: 10px 20px; margin: 0; }
+    .skills dt { font-weight: 700; color: var(--accent); text-align: right; }
+    .skills dd { margin: 0; }
+
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .card { display: flex; flex-direction: column; padding: 18px 20px; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; box-shadow: var(--shadow); }
+    .card h3 { margin: 0 0 2px; font-size: 1.12rem; color: var(--heading); }
+    .card .lang { font-size: .85rem; font-weight: 700; color: var(--accent); }
+    .card p { margin: 8px 0 12px; font-size: 1rem; }
+    .card .links { margin-top: auto; display: flex; gap: 16px; font-size: .95rem; font-weight: 700; }
+
+    .edu { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
+    .edu strong { color: var(--heading); }
+    .edu .aside { color: var(--muted); }
+
+    footer { margin-top: 48px; padding: 24px 0 40px; border-top: 1px solid var(--rule); color: var(--muted); font-size: .9rem; }
+
+    @media (max-width: 640px) {
+      body { font-size: 17px; }
+      header { padding-top: 40px; }
+      .roles { padding-left: 0; }
+      .roles li { grid-template-columns: 1fr; margin-bottom: 6px; }
+      .skills { grid-template-columns: 1fr; gap: 2px; }
+      .skills dt { text-align: left; }
+      .skills dd { margin-bottom: 12px; }
+      .projects { grid-template-columns: 1fr; }
+    }
+    @media print {
+      header { padding-top: 0; }
+      .card { box-shadow: none; }
+      a { color: inherit; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Rowland Rose</h1>
+      <p class="tagline"><span>VP of Technology</span><span>Engineering Leader</span><span>Full-Stack Developer</span></p>
+      <ul class="contact">
+        <li>Mishawaka, IN</li>
+        <li><a href="mailto:rowland@rose.codes">rowland@rose.codes</a></li>
+        <li><a href="https://www.linkedin.com/in/rowlandrose/">linkedin.com/in/rowlandrose</a></li>
+        <li><a href="https://github.com/rowlandrose">github.com/rowlandrose</a></li>
+      </ul>
+    </header>
+
+    <main>
+      <section aria-labelledby="profile">
+        <h2 id="profile">Profile</h2>
+        <p class="profile"><strong>Developer turned VP of Technology, with 13+ years at RealClearPolitics.</strong> Sets technology strategy and oversees delivery for 17+ websites. Leads a team of five full-time in-house developers. Stays close enough to the code to make sound technical calls. Manages AI developer tool adoption.</p>
+      </section>
+
+      <section aria-labelledby="contact">
+        <h2 id="contact">Get in Touch</h2>
+        <div class="callout">
+          <p>For inquiries of any kind, please email me.</p>
+          <a class="button" href="mailto:rowland@rose.codes">rowland@rose.codes</a>
+        </div>
+      </section>
+
+      <section aria-labelledby="skills">
+        <h2 id="skills">Technical Skills</h2>
+        <dl class="skills">
+          <dt>Languages &amp; Frameworks</dt><dd>TypeScript, JavaScript, PHP, Next.js / React, Laravel, CodeIgniter, Vue.js, HTML/CSS</dd>
+          <dt>Platforms &amp; Infrastructure</dt><dd>Payload CMS, custom in-house PHP framework &amp; CMS, Vercel, Cloudflare, AWS CloudFront, Docker, GitHub</dd>
+          <dt>Data</dt><dd>PostgreSQL, MySQL; polling and election-results data</dd>
+          <dt>AI</dt><dd>Claude Code, Cursor, custom Claude skills, working with MCP servers and connectors (Google Analytics, email, Slack, project boards), OpenAI API</dd>
+          <dt>Quality &amp; Operations</dt><dd>Core Web Vitals and front-end performance, automated end-to-end testing, SSL certificate monitoring, CDN caching and security configuration, preview deployments</dd>
+        </dl>
+      </section>
+
+      <section aria-labelledby="projects">
+        <h2 id="projects">Side Projects</h2>
+        <div class="projects">
+          <article class="card">
+            <h3>Rose Family Devotions</h3>
+            <span class="lang">PHP</span>
+            <p>Scans church bulletins with regular expressions and turns them into a step-by-step daily devotion plan for our family.</p>
+            <div class="links"><a href="https://www.rose.codes/">rose.codes</a></div>
+          </article>
+          <article class="card">
+            <h3>MIDIRen</h3>
+            <span class="lang">JavaScript</span>
+            <p>A generative multi-track pattern sequencer for live use, running on a Raspberry Pi with a USB-to-MIDI interface and a MIDI controller.</p>
+            <div class="links"><a href="https://github.com/rowlandrose/MIDIRen">GitHub</a></div>
+          </article>
+          <article class="card">
+            <h3>Old School JRPG Map Generator</h3>
+            <span class="lang">Rust</span>
+            <p>Generates random overworld maps in an 8-bit / 16-bit style and saves them as PNGs.</p>
+            <div class="links"><a href="https://github.com/rowlandrose/old_school_jrpg_map_generator">GitHub</a></div>
+          </article>
+          <article class="card">
+            <h3>Create.World</h3>
+            <span class="lang">JavaScript</span>
+            <p>Browser-based map generation tools, including an old-school RPG map generator.</p>
+            <div class="links"><a href="https://github.com/rowlandrose/create.world">GitHub</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="education">
+        <h2 id="education">Education</h2>
+        <div class="edu"><span><strong>Purdue University</strong> &nbsp;B.S., Computer Graphics Technology</span><span class="aside">West Lafayette, IN</span></div>
+      </section>
+    </main>
+
+    <footer>© 2026 Rowland Rose</footer>
+  </div>
+</body>
+</html>
