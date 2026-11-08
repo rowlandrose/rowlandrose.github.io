@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<title>Chord Progression Experiment</title>
+
+</head>
+
+<body>
+
+<h1>Chord Progression Experiment</h1>
+<p>By <a href="https://www.rowlandrose.com">Rowland Rose</a></p>
+
+<label for="chord_num_min">Step Min</label>
+<select id="chord_num_min">
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5" selected>5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+</select>
+
+<label for="chord_num_max">Step Max</label>
+<select id="chord_num_max">
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7" selected>7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+</select>
+<select id="key_root">
+	<!-- <option value="relative_major">Relative (I)</option>
+	<option value="c_major">C</option>
+	<option value="db_major">C#/Db</option>
+	<option value="d_major">D</option>
+	<option value="eb_major">D#/Eb</option>
+	<option value="e_major">E</option>
+	<option value="f_major">F</option>
+	<option value="gb_major">F#/Gb</option>
+	<option value="g_major">G</option>
+	<option value="ab_major">G#/Ab</option>
+	<option value="a_major">A</option>
+	<option value="bb_major">A#/Bb</option>
+	<option value="b_major">B</option>
+	<option value="relative_minor">Relative (i)</option>
+	<option value="c_minor">c</option>
+	<option value="db_minor">c#/db</option>
+	<option value="d_minor">d</option>
+	<option value="eb_minor">d#/eb</option>
+	<option value="e_minor">e</option>
+	<option value="f_minor">f</option>
+	<option value="gb_minor">f#/bb</option>
+	<option value="g_minor">b</option>
+	<option value="ab_minor">b#/ab</option>
+	<option value="a_minor">a</option>
+	<option value="bb_minor">a#/bb</option>
+	<option value="b_minor">b</option> -->
+	<option value="relative">Relative (I)</option>
+	<option value="0">C</option>
+	<option value="1">C&#x266f;/D&#x266d;</option>
+	<option value="2">D</option>
+	<option value="3">D&#x266f;/E&#x266d;</option>
+	<option value="4">E</option>
+	<option value="5">F</option>
+	<option value="6">F&#x266f;/G&#x266d;</option>
+	<option value="7">G</option>
+	<option value="8">G&#x266f;/A&#x266d;</option>
+	<option value="9">A</option>
+	<option value="10">A&#x266f;/B&#x266d;</option>
+	<option value="11">B</option>
+</select>
+<select id="chord_ruleset"></select>
+<button id="gen_prog">Generate chord progression</button>
+
+<div id="chord_output"></div>
+<pre id="msg"></pre>
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script>
+
+/*var relative_notes = [
+	['I',    'i'],
+	['bII',  'bii'],
+	['II',   'ii'],
+	['bIII', 'biii'],
+	['III',  'iii'],
+	['IV',   'iv'],
+	['bV',   'bv'],
+	['V',    'v'],
+	['bVI',  'bvi'],
+	['VI',   'vi'],
+	['bVII', 'bvii'],
+	['VII',  'vii']
+];*/
+
+var relative_notes = {
+	'I' : 0,
+	'i' : 0,
+	'bII' : 1,
+	'bii' : 1,
+	'II' : 2,
+	'ii' : 2,
+	'bIII' : 3,
+	'biii' : 3,
+	'III' : 4,
+	'iii' : 4,
+	'IV' : 5,
+	'iv' : 5,
+	'bV' : 6,
+	'bv' : 6,
+	'V' : 7,
+	'v' : 7,
+	'bVI' : 8,
+	'bvi' : 8,
+	'VI' : 9,
+	'vi' : 9,
+	'bVII' : 10,
+	'bvii' : 10,
+	'VII' : 11,
+	'vii' : 11,
+}
+
+var note_letters = ['C', 'bD', 'D', 'bE', 'E', 'F', 'bG', 'G', 'bA', 'A', 'bB', 'B'];
+
+var chord_ruleset_html = '';
+var chord_json = {};
+
+$.getJSON('chords.json', function(data)
+{
+	$('#msg').append('Read from chords.json');
+	chord_json = data;
+
+	for(var chord_ruleset in data)
+	{
+		// This avoids going through inherited properties of the object
+		if(data.hasOwnProperty(chord_ruleset)) 
+		{
+			chord_ruleset_html += '<option value="'+chord_ruleset+'">'+chord_ruleset+'</option>';
+		}
+	}
+
+	$('#chord_ruleset').html(chord_ruleset_html);
+
+});
+
+$('#gen_prog').click(function()
+{
+	var step_max = parseInt($('#chord_num_max').val());
+	var step_min = parseInt($('#chord_num_min').val());
+	var step_total = Math.floor( Math.random() * ( ( step_max - step_min ) + 1 ) ) + step_min;
+	var current_step = 1;
+	var chord_prog = [];
+	var danger_chords = [];
+	var current_chord = '';
+
+	var chord_data = chord_json[$('#chord_ruleset').val()];
+
+	var key_root = $('#key_root').val();
+
+	// Danger chords: Chords that only lead to root chord. Make sure to avoid these until at the appropriate count away from end.
+	// Also, don't make second to last chord the root note. Unless allowing repeat chords.
+
+	// Find danger chords
+
+	var count = 1;
+	var root_chord = '';
+	for(var chord in chord_data)
+	{
+		// This avoids going through inherited properties of the object
+		if(chord_data.hasOwnProperty(chord)) 
+		{
+			if(count == 1) {
+				root_chord = chord;
+				break;
+			}
+			if(chord_data[chord].length == 1 && chord_data[chord][0] == root_chord) {
+				danger_chords.push(chord);
+			}
+			count++;
+		}
+	}
+
+	//console.log('danger_chords');
+	//console.log(danger_chords);
+
+	chord_prog.push(root_chord);
+	current_step++;
+	current_chord = root_chord;
+
+	while(current_step <= step_total)
+	{
+		var safe_chords = [];
+		for(var i = 0; i < chord_data[current_chord].length; i++)
+		{
+			var possible_chord = chord_data[current_chord][i];
+			if(step_total == current_step)
+			{
+				// Only allow chords with ability to go to root chord
+				var safe = false;
+				for(var j = 0; j < chord_data[possible_chord].length; j++)
+				{
+					if(chord_data[possible_chord][j] == root_chord) {
+						safe = true;
+					}
+				}
+				if(safe) {
+					safe_chords.push(possible_chord);
+				}
+			}
+			else if(step_total - current_step == 1)
+			{
+				// Don't allow danger chords
+				var danger = false;
+				for(var j = 0; j < danger_chords.length; j++)
+				{
+					if(possible_chord == danger_chords[j]) {
+						danger = true;
+					}
+				}
+				if(!danger) {
+					safe_chords.push(possible_chord);
+				}
+			}
+			else {
+				safe_chords.push(possible_chord);
+			}
+		}
+
+		//console.log('safe_chords');
+		//console.log(safe_chords);
+
+		var chosen_chord = safe_chords[Math.floor(Math.random() * safe_chords.length)];
+
+		chord_prog.push(chosen_chord);
+		current_step++;
+		current_chord = chosen_chord;
+	}
+
+	var output_html = '<p>Step total: ' + step_total + ', Chord progression: ';
+	for(var i = 0; i < chord_prog.length; i++)
+	{
+		if(i > 0) {
+			output_html += ' &rarr; ';
+		}
+		
+		var chord_arr = chord_prog[i].split('_');
+		var new_chord_num = relative_notes[chord_arr[0]];
+		var new_chord = '';
+		var suffix_1 = '';
+		var suffix_2 = '';
+
+		if(key_root == 'relative') {
+			new_chord = chord_arr[0];
+		}
+		else
+		{
+			var offset = parseInt(key_root) + new_chord_num;
+			if(offset > 11) {
+				offset -= 12;
+			}
+			new_chord = note_letters[offset];
+			if(chord_arr[0] == chord_arr[0].toLowerCase()) {
+				new_chord = new_chord.toLowerCase();
+			}
+		}
+		// Suffix 1
+		if(new_chord.charAt(0) == 'b' && new_chord.charAt(1) != '' ) {
+			new_chord = new_chord.substr(1);
+			suffix_1 = '&#x266d;';
+		}
+		// Suffix 2
+		if(typeof chord_arr[1] !== 'undefined') {
+			var suffix_2 = '_'+chord_arr[1];
+			if(suffix_2 == '_d') {
+				suffix_2 = '&deg;';
+			}
+		}
+		output_html += new_chord + suffix_1 + suffix_2;
+		
+	}
+	output_html += '</p>';
+
+	$('#chord_output').append(output_html);
+});
+
+
+
+</script>
+
+</body>
+
+</html>

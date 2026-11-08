@@ -1,0 +1,121 @@
+{
+	"Major" : {
+		"I" : [
+			"ii",
+			"iii",
+			"IV",
+			"V",
+			"vi",
+			"vii_d"
+		],
+		"ii" : [
+			"I",
+			"V",
+			"vii_d"
+		],
+		"iii" : [
+			"ii",
+			"IV",
+			"vi"
+		],
+		"IV" : [
+			"I",
+			"ii",
+			"V",
+			"vii_d"
+		],
+		"V" : [
+			"I",
+			"vi",
+			"vii_d"
+		],
+		"vi" : [
+			"ii",
+			"IV"
+		],
+		"vii_d" : [
+			"V",
+			"I"
+		]
+	},
+	"Minor" : {
+		"i" : [
+			"ii_d",
+			"III",
+			"iv",
+			"V",
+			"VI",
+			"vii_d",
+			"bVII"
+		],
+		"ii_d" : [
+			"i",
+			"V",
+			"vii_d"
+		],
+		"III" : [
+			"ii_d",
+			"iv",
+			"VI"
+		],
+		"iv" : [
+			"i",
+			"ii_d",
+			"V",
+			"vii_d"
+		],
+		"V" : [
+			"i",
+			"VI",
+			"vii_d"
+		],
+		"VI" : [
+			"ii_d",
+			"iv"
+		],
+		"vii_d" : [
+			"i",
+			"V",
+			"VI"
+		],
+		"bVII" : [
+			"ii_d",
+			"III",
+			"iv"
+		]
+	},
+	"Classical" : {
+		"I" : [
+			"ii",
+			"iii",
+			"IV",
+			"V",
+			"vi",
+			"vii"
+		],
+		"ii" : [
+			"V",
+			"vii"
+		],
+		"iii" : [
+			"IV",
+			"vi"
+		],
+		"IV" : [
+			"ii",
+			"V",
+			"vii"
+		],
+		"V" : [
+			"vi"
+		],
+		"vi" : [
+			"ii",
+			"IV",
+			"V"
+		],
+		"vii" : [
+			"I"
+		]
+	}
+}

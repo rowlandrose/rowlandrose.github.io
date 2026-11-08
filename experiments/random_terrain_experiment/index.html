@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Random Terrain Experiment</title>
+		<link rel="stylesheet" type="text/css" href="styles/main.css">
+		<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+		<script src="https://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+		<script src="js/game.js"></script>
+	</head>
+
+	<body>
+		
+		<canvas id="canvas" width="512" height="512"></canvas>
+		<p id="temp_count"></p>
+		<p id="avg_h"></p>
+		<p id="top_h"></p>
+		<p>
+		    <label for="amount">Height of center point (from 0 to 100):</label>
+		    <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+		</p>
+		<div id="slider-range"></div>
+		<p>
+		    <label for="amount-rough">Roughness (from 0 to 100):</label>
+		    <input type="text" id="amount-rough" style="border: 0; color: #f6931f; font-weight: bold;" />
+		</p>
+		<div id="slider-rough"></div>
+		<button id="regen">Regenerate Terrain</button>
+		
+	</body>
+</html>

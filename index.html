@@ -102,6 +102,11 @@
     .card p { margin: 8px 0 12px; font-size: 1rem; }
     .card .links { margin-top: auto; display: flex; gap: 16px; font-size: .95rem; font-weight: 700; }
 
+    a.card.exp { flex-direction: row; align-items: flex-start; gap: 16px; color: inherit; text-decoration: none; transition: border-color .15s; }
+    a.card.exp:hover { border-color: var(--accent); }
+    a.card.exp:hover h3 { color: var(--accent); }
+    a.card.exp img { flex: none; width: 96px; height: 96px; object-fit: cover; border-radius: 6px; background: var(--surface); }
+    a.card.exp p { margin-bottom: 0; }
     .edu { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
     .edu strong { color: var(--heading); }
     .edu .aside { color: var(--muted); }
@@ -196,6 +201,44 @@
       <section aria-labelledby="education">
         <h2 id="education">Education</h2>
         <div class="edu"><span><strong>Purdue University</strong> &nbsp;B.S., Computer Graphics Technology</span><span class="aside">West Lafayette, IN</span></div>
+      </section>
+
+      <section aria-labelledby="experiments">
+        <h2 id="experiments">Experiments</h2>
+        <div class="projects">
+          <a class="card exp" href="/experiments/chord_progression_experiment/">
+            <img src="/experiments/img/chord_progression_experiment_screen.png" alt="" loading="lazy" width="96" height="96">
+            <div>
+              <h3>Chord Progression Experiment</h3>
+              <span class="lang">JavaScript</span>
+              <p>Pick a chord, a major or minor scale, and a step range, and get back a chord progression built from common pop progressions.</p>
+            </div>
+          </a>
+          <a class="card exp" href="/experiments/melody_grid/">
+            <img src="/experiments/img/melody_grid.jpg" alt="" loading="lazy" width="96" height="96">
+            <div>
+              <h3>Melody Grid</h3>
+              <span class="lang">JavaScript</span>
+              <p>A simple step sequencer built with timbre.js.</p>
+            </div>
+          </a>
+          <a class="card exp" href="/experiments/random_terrain_experiment/">
+            <img src="/experiments/img/random_terrain_experiment.png" alt="" loading="lazy" width="96" height="96">
+            <div>
+              <h3>Random Terrain Experiment</h3>
+              <span class="lang">JavaScript</span>
+              <p>Generates a heightmap and draws terrain from it based on your settings.</p>
+            </div>
+          </a>
+          <a class="card exp" href="/experiments/flash_music_maker/">
+            <img src="/experiments/img/flash_music_maker.png" alt="" loading="lazy" width="96" height="96">
+            <div>
+              <h3>Flash Music Maker</h3>
+              <span class="lang">ActionScript</span>
+              <p>Make music with bouncing balls. The precursor to the Music Bounce Flash game, now running through the Ruffle emulator.</p>
+            </div>
+          </a>
+        </div>
       </section>
     </main>
 

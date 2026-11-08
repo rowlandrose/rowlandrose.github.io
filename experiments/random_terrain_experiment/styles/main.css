@@ -1,0 +1,13 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+#canvas {
+	border:#999 1px solid;
+	margin: 25px auto;
+}
+
+#slider-range, #slider-rough {
+	width: 400px;
+}
